@@ -1,0 +1,33 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+}
+
+.app {
+  padding: 40px 0;
+
+  &__stage {
+    border: 1px solid #000;
+  }
+
+  &__images {
+    display: none;
+  }
+}
+
+.container {
+  width: 1050px;
+  margin: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+
