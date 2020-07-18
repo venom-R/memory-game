@@ -19,8 +19,8 @@ export class MemoryGameController {
     initRandomCards() {
         const {images} = this.view.nodes;
         const shuffledImages = Helpers.shuffle(images).slice(0, this.model.maxCardsLength / 2);
-        const originalCards = shuffledImages.map(image => new Card(image));
-        const duplicateCards = originalCards.map(card => new Card(card.image));
+        const originalCards = shuffledImages.map(image => new Card(image, 230, 168));
+        const duplicateCards = originalCards.map(card => new Card(card.image, 230, 168));
         this.model.cards = Helpers.shuffle(originalCards.concat(duplicateCards));
     }
 
@@ -41,7 +41,7 @@ export class MemoryGameController {
         card.isSelected = true;
         if (this.model.selectedCard !== null) {
             // card selected
-            if (card.key === this.model.selectedCard.key && card.id !== this.model.selectedCard.id) {
+            if (this.isCardMatched(card)) {
                 // cards matched
                 this.model.addMatchedCards(card, this.model.selectedCard);
                 this.model.selectedCard = null;
@@ -63,6 +63,10 @@ export class MemoryGameController {
             this.model.selectedCard = card;
         }
         this.update();
+    }
+
+    isCardMatched(card) {
+        return card.key === this.model.selectedCard.key && card.id !== this.model.selectedCard.id;
     }
 
     draw() {

@@ -1,11 +1,12 @@
 import { v4 as uuid } from 'uuid';
+import {RoundedRect} from "./RoundedRect";
 
-export class Card {
-    constructor(image) {
-        this.width = 230;
-        this.height = 168;
+export class Card extends RoundedRect {
+    constructor(image, width, height) {
+        super(5, width, height)
         this.margin = 20;
         this.image = image;
+        this.color = "#ffde27";
         this.key = image.dataset.key;
         this.isSelected = false;
         this.id = uuid();
@@ -22,13 +23,15 @@ export class Card {
     }
 
     drawBack(ctx) {
-        ctx.fillStyle = "red";
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        super.draw(ctx, this.x, this.y);
     }
 
     drawFront(ctx) {
-        ctx.strokeRect(this.x, this.y, this.width, this.height);
+        ctx.save();
+        super.draw(ctx, this.x, this.y);
+        ctx.clip();
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+        ctx.restore();
     }
 
     isIntersect(pointX, pointY) {
