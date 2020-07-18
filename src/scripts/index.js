@@ -1,6 +1,13 @@
-const images = document.querySelectorAll("#images img");
-const canvas = document.getElementById("stage");
+import {MemoryGameController} from "./controller/MemoryGameController";
+import {MemoryGameView} from "./view/MemoryGameView";
+import {MemoryGameModel} from "./model/MemoryGameModel";
 
-window.addEventListener("load", () => {
+import "../styles/index.scss";
 
-});
+window.addEventListener("load", initGame);
+
+function initGame() {
+    const memoryGameModel = new MemoryGameModel();
+    const memoryGameView = new MemoryGameView();
+    new MemoryGameController(memoryGameModel, memoryGameView);
+}

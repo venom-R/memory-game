@@ -12,5 +12,8 @@
   "license": "ISC",
   "devDependencies": {
     "sass": "^1.26.10"
+  },
+  "dependencies": {
+    "uuid": "^8.2.0"
   }
 }

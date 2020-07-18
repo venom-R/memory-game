@@ -8,15 +8,11 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: #000;
+  background: #f4f4f4;
 }
 
 .app {
   padding: 40px 0;
-
-  &__stage {
-    border: 1px solid #000;
-  }
 
   &__images {
     display: none;
